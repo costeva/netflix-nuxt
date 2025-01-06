@@ -12,7 +12,7 @@
       />
       <div
         v-if="open"
-        class="fixed top-0 left-0 z-[999] w-full h-screen bg-white"
+        class="fixed top-0 left-0 z-[999] w-full h-screen bg-black"
       >
         <Icon
           class="absolute z-50 cursor-pointer right-4 top-4"

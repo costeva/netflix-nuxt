@@ -1,10 +1,18 @@
 <template>
-  <div class="grid items-start lg:flex justify-between">
-    <Sidebar />
+  <div class="min-h-screen flex flex-col">
+    <!-- Contenedor principal con grid y flex -->
+    <div class="grid flex-grow lg:flex">
+      <!-- Sidebar con ancho fijo -->
+      <Sidebar />
 
-    <main class="w-full p-8">
-      <slot />
-    </main>
+      <!-- Main ajustado -->
+      <main class="flex-1 p-8 overflow-auto">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <Footer />
   </div>
 </template>
 

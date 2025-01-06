@@ -21,32 +21,30 @@
 </template>
 
 <script setup>
-import { NuxtLink } from "#components";
-
 const items = ref([
   {
-    title: "Overview",
-    path: "/",
+    title: "Search",
+    path: "/home",
     icon: "mdi:magnify",
   },
   {
-    title: "Transactions",
-    path: "/transactions",
+    title: "Home",
+    path: "/home",
     icon: "mdi:home-outline",
   },
   {
     title: "Account",
-    path: "/",
+
     icon: "mdi:trending-up",
   },
   {
     title: "Contacts",
-    path: "/",
+
     icon: "mdi:television",
   },
   {
     title: "Settings",
-    path: "/",
+
     icon: "mdi:movie-outline",
   },
 ]);
