@@ -4,16 +4,10 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+
   devtools: { enabled: true },
-  modules: [
-    "@nuxtjs/supabase",
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/color-mode",
-    "nuxt-icon",
-  ],
-  supabase: {
-    redirect: false,
-  },
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "nuxt-icon"],
+
   colorMode: {
     classSuffix: "",
   },

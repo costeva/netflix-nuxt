@@ -3,9 +3,12 @@
     <div
       class="relative z-10 w-full max-w-md px-6 py-8 bg-black bg-opacity-70 border border-gray-700 rounded"
     >
+      <p v-if="message" class="text-white font-semibold flex justify-center">
+        {{ message }}
+      </p>
       <h1 class="mb-6 text-3xl font-semibold text-white">Inicia sesión</h1>
 
-      <form>
+      <form @submit.prevent="handleSubmit">
         <div class="mb-4">
           <label
             for="email"
@@ -82,7 +85,22 @@
 </template>
 
 <script setup>
-const email = ref("alexiscostedoat@gmail.com");
-const password = ref("123456");
+const route = useRoute();
+
+const message = ref(route.query.message);
+const email = ref(null);
+const password = ref(null);
 const rememberMe = ref(false);
+const router = useRouter();
+
+const { login } = useAuth();
+
+const handleSubmit = async () => {
+  try {
+    await login(email.value, password.value);
+    router.push("/home");
+  } catch (error) {
+    alert(error.message);
+  }
+};
 </script>
