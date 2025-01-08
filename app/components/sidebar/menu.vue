@@ -24,7 +24,7 @@
 const items = ref([
   {
     title: "Search",
-    path: "/home",
+    path: "/search",
     icon: "mdi:magnify",
   },
   {

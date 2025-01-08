@@ -1,22 +1,26 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <!-- Contenedor principal con grid y flex -->
     <div class="grid flex-grow lg:flex">
-      <!-- Sidebar con ancho fijo -->
       <Sidebar />
-
-      <!-- Main ajustado -->
       <main class="flex-1 p-8 overflow-auto">
         <slot />
       </main>
     </div>
-
-    <!-- Footer -->
-    <Footer />
+    <Footer :links="footerLinks" copyright="© 2025 Netflix, Inc." />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const footerLinks = [
+  { text: "Audio descriptivo", href: "#" },
+  { text: "Relaciones con inversionistas", href: "#" },
+  { text: "Avisos legales", href: "#" },
+  { text: "Centro de ayuda", href: "#" },
+  { text: "Términos de uso", href: "#" },
+  { text: "Privacidad", href: "#" },
+  { text: "Contáctanos", href: "#" },
+];
+</script>
 
 <style>
 body {
