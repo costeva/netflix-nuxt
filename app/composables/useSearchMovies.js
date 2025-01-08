@@ -35,7 +35,7 @@ export function useSearchMovies() {
         error.value = response.Error || "No se encontraron resultados.";
       }
     } catch (err) {
-      error.value = "Error al obtener los datos.";
+      error.value = err?.message;
       results.value = [];
       totalResults.value = 0;
     } finally {

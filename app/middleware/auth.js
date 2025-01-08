@@ -1,7 +1,7 @@
 export default defineNuxtRouteMiddleware((to) => {
   const { isAuthenticated, restoreSession } = useAuth();
 
-  if (process.client) {
+  if (import.meta.client) {
     restoreSession();
   }
 

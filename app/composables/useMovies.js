@@ -35,9 +35,7 @@ export function useMovies() {
         if (data.value?.Response === "True") {
           allMovies.push(...data.value.Search);
         } else {
-          console.warn(
-            `Página ${page}: ${data.value?.Error || "Error desconocido"}`
-          );
+          error.value = `Página ${page}: ${data.value?.Error || "Error desconocido"}`;
           break;
         }
         loading.value = status.value === "pending";

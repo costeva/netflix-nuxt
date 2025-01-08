@@ -1,10 +1,6 @@
 <template>
   <div :class="`overflow-hidden rounded-lg ${size}`">
-    <img
-      src="@/assets/image/netflix-logo.png"
-      :alt="alt"
-      class="object-contain w-full h-full"
-    />
+    <img :src="src" :alt="alt" class="object-contain w-full h-full" >
   </div>
 </template>
 

@@ -13,7 +13,7 @@
         alt="Poster"
         class="w-full h-[300px] object-cover"
         loading="lazy"
-      />
+      >
       <div
         class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-center py-2"
       >

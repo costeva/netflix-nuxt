@@ -51,9 +51,9 @@
 
 import Spinner from '@/components/Spinner.vue';
 <script setup>
-const { fetchMovieDetails, movieDetails, loading } = useMovies();
+const { fetchMovieDetails, movieDetails } = useMovies();
 const route = useRoute();
-console.log(movieDetails, "  detallemovies");
+
 const imdbID = route.params.imdbID;
 
 onMounted(async () => {

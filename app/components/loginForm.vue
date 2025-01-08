@@ -18,13 +18,13 @@
           </label>
           <input
             id="email"
+            v-model="email"
             name="email"
             type="email"
-            v-model="email"
             class="w-full px-3 py-2 text-sm text-white placeholder-gray-400 bg-gray-800 bg-opacity-70 border border-gray-600 rounded focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
             placeholder="Ingresa tu correo o teléfono"
             required
-          />
+          >
         </div>
 
         <div class="mb-4">
@@ -36,13 +36,13 @@
           </label>
           <input
             id="password"
+            v-model="password"
             name="password"
             type="password"
-            v-model="password"
             class="w-full px-3 py-2 text-sm text-white placeholder-gray-400 bg-gray-800 bg-opacity-70 border border-gray-600 rounded focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
             placeholder="Tu contraseña"
             required
-          />
+          >
         </div>
 
         <button
@@ -58,11 +58,11 @@
           <div>
             <input
               id="rememberMe"
+              v-model="rememberMe"
               name="rememberMe"
               type="checkbox"
               class="mr-1 rounded border-gray-400 focus:ring-0"
-              v-model="rememberMe"
-            />
+            >
             <label for="rememberMe">Recuérdame</label>
           </div>
           <div>

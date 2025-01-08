@@ -6,12 +6,12 @@
       align="top"
       color="red-500"
     />
-    <div class="text-white min-h-screen" v-if="!loading">
+    <div v-if="!loading" class="text-white min-h-screen">
       <section
         class="relative h-[70vh] bg-cover bg-center sm:h-[60vh] md:h-[70vh] lg:h-[80vh]"
         :style="{ backgroundImage: `url('/image/supercampeones.jpg')` }"
       >
-        <div class="absolute inset-0 bg-dark bg-opacity-80"></div>
+        <div class="absolute inset-0 bg-dark bg-opacity-80"/>
         <div
           class="relative z-10 flex flex-col items-center sm:items-start justify-center h-full px-4 sm:px-8 text-center sm:text-left"
         >
@@ -19,7 +19,7 @@
             src="@/assets/image/netflix-3.svg"
             alt="Netflix Logo"
             class="w-24 sm:w-32 mb-4"
-          />
+          >
           <h1 class="text-2xl sm:text-4xl font-bold mb-4">Captain Tsubasa</h1>
           <p class="text-base sm:text-lg mb-6">
             Sigue las aventuras del joven futbolista con el sueño de convertirse
@@ -42,7 +42,7 @@
         </div>
       </section>
 
-      <Carrusel :carousels="carousels" :goToMovie="goToMovie" />
+      <Carrusel :carousels="carousels" :go-to-movie="goToMovie" />
     </div>
   </div>
 </template>

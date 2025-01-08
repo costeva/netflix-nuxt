@@ -36,10 +36,8 @@ import logoSrc from "@/assets/image/netflix-logo.png";
 
 const open = ref(false);
 
-const handleMenuClick = (menuItem) => {
-  console.log("Evento recibido en Index.vue:", menuItem);
+const handleMenuClick = () => {
   open.value = false;
-  console.log("Estado de 'open' actualizado a:", open.value);
 };
 </script>
 

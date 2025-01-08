@@ -14,7 +14,7 @@
           alt="Poster"
           class="w-full h-full object-cover"
           loading="lazy"
-        />
+        >
 
         <div
           class="absolute top-2 right-2 bg-gray-900 bg-opacity-90 text-white text-sm px-2 py-1 rounded shadow-md"

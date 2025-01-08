@@ -10,7 +10,7 @@
             class="flex-none w-full sm:w-40 h-60 bg-cover bg-center rounded"
             :style="{ backgroundImage: `url('${movie.Poster}')` }"
             @click="goToMovie(movie.imdbID)"
-          ></div>
+          />
         </div>
       </div>
     </div>

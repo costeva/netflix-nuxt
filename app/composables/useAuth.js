@@ -3,7 +3,7 @@ export const useAuth = () => {
   const user = useState("user", () => null);
 
   const restoreSession = () => {
-    if (process.client) {
+    if (import.meta.client) {
       const auth = localStorage.getItem("isAuthenticated");
       const storedUser = localStorage.getItem("user");
       if (auth === "true") {
@@ -17,7 +17,7 @@ export const useAuth = () => {
     if (email === "test@example.com" && password === "123456") {
       isAuthenticated.value = true;
       user.value = { email };
-      if (process.client) {
+      if (import.meta.client) {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("user", JSON.stringify(user.value));
       }
@@ -30,7 +30,7 @@ export const useAuth = () => {
   const logout = () => {
     isAuthenticated.value = false;
     user.value = null;
-    if (process.client) {
+    if (import.meta.client) {
       localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("user");
     }

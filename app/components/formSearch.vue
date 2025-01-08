@@ -6,19 +6,19 @@
     <GridMovies
       v-if="results.length"
       :movies="results"
-      :goToMovie="goToMovie"
+      :go-to-movie="goToMovie"
     />
     <MobileCarrusel
       v-if="results.length"
       :movies="results"
-      :goToMovie="goToMovie"
+      :go-to-movie="goToMovie"
     />
     <Pagination
       v-if="totalPages > 1"
-      :currentPage="currentPage"
-      :totalPages="totalPages"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      :prev-page="prevPage"
+      :next-page="nextPage"
     />
   </div>
 </template>
@@ -45,7 +45,7 @@ watch(searchQuery, handleInput);
   display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none; /* IE */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>
