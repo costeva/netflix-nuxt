@@ -51,23 +51,23 @@ export function useMovies() {
     }
   };
 
-  const fetchMovieDetails = (imdbID) => {
+  const fetchMovieDetails = async (imdbID) => {
     const {
       data,
-      error: fetchError,
       status,
-    } = useFetch("https://www.omdbapi.com/", {
-      query: {
-        apikey: "4a308855",
-        i: imdbID,
-      },
-    });
+      error: fetchError,
+    } = await useAsyncData(`movieDetails-${imdbID}`, () =>
+      $fetch("https://www.omdbapi.com/", {
+        params: {
+          apikey: "4a308855",
+          i: imdbID,
+        },
+      })
+    );
 
-    movieDetails.value = data;
-    error.value = fetchError;
+    movieDetails.value = data?.value || null;
     loading.value = status;
-
-    return data;
+    error.value = fetchError?.value || null;
   };
 
   return {
