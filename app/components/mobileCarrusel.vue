@@ -8,17 +8,28 @@
       class="flex-none w-full h-[300px] bg-cover bg-center rounded snap-start shadow-md hover:shadow-lg transition-shadow duration-300"
       @click="goToMovie(movie.imdbID)"
     >
-      <img
-        :src="movie.Poster !== 'N/A' ? movie?.Poster : '/no-image.png'"
-        alt="Poster"
-        class="w-full h-full object-cover"
-        loading="lazy"
-      />
-      <div
-        class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white text-center py-2"
-      >
-        <h3 class="text-sm font-semibold truncate">{{ movie?.Title }}</h3>
-        <p class="text-xs">{{ movie?.Year }}</p>
+      <div class="relative w-full h-72">
+        <img
+          :src="movie.Poster !== 'N/A' ? movie?.Poster : '/no-image.png'"
+          alt="Poster"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+
+        <div
+          class="absolute top-2 right-2 bg-gray-900 bg-opacity-90 text-white text-sm px-2 py-1 rounded shadow-md"
+        >
+          {{ movie?.Year }}
+        </div>
+      </div>
+
+      <div class="p-4">
+        <h3
+          class="text-lg font-semibold text-white truncate whitespace-normal break-words"
+          title="movie?.Title"
+        >
+          {{ movie?.Title }}
+        </h3>
       </div>
     </div>
   </div>

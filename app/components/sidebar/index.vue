@@ -12,7 +12,7 @@
       />
       <div
         v-if="open"
-        class="fixed top-0 left-0 z-[999] w-full h-screen bg-black"
+        class="fixed top-0 left-0 z-[999] w-50 h-screen bg-black"
       >
         <Icon
           class="absolute z-50 cursor-pointer right-4 top-4"
@@ -20,13 +20,12 @@
           name="material-symbols:close"
           @click="open = false"
         />
-        <SidebarMenu />
+
+        <SidebarMenu @menu-clicked="handleMenuClick" />
       </div>
     </div>
 
-    <div
-      class="hidden lg:flex w-[100px] h-screen flex-col justify-between border-r"
-    >
+    <div class="hidden lg:flex w-[110px] h-screen flex-col justify-between">
       <SidebarMenu />
     </div>
   </div>
@@ -36,6 +35,12 @@
 import logoSrc from "@/assets/image/netflix-logo.png";
 
 const open = ref(false);
+
+const handleMenuClick = (menuItem) => {
+  console.log("Evento recibido en Index.vue:", menuItem);
+  open.value = false;
+  console.log("Estado de 'open' actualizado a:", open.value);
+};
 </script>
 
 <style scoped></style>

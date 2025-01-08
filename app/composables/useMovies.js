@@ -16,16 +16,17 @@ export function useMovies() {
     try {
       const allMovies = [];
       for (let page = 1; page <= totalPages; page++) {
-        const { data, error: fetchError } = await useFetch(
-          "https://www.omdbapi.com/",
-          {
-            query: {
-              apikey: "4a308855",
-              s: searchTerm,
-              page: page.toString(),
-            },
-          }
-        );
+        const {
+          data,
+          error: fetchError,
+          status,
+        } = await useFetch("https://www.omdbapi.com/", {
+          query: {
+            apikey: "4a308855",
+            s: searchTerm,
+            page: page.toString(),
+          },
+        });
 
         if (fetchError.value) {
           throw new Error(fetchError.value.message);
@@ -39,15 +40,16 @@ export function useMovies() {
           );
           break;
         }
+        loading.value = status.value === "pending";
       }
 
-      loading.value = false;
+      movieList.value = allMovies;
       return allMovies;
     } catch (err) {
       error.value = err.message;
-      loading.value = false;
-      console.error("Error en fetchMultiplePages:", err.message);
       return [];
+    } finally {
+      loading.value = false;
     }
   };
 

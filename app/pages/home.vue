@@ -1,7 +1,7 @@
 <template>
   <div>
     <Spinner
-      :loading="loading"
+      :loading="loading && carousels.length === 0"
       :label="'Cargando...'"
       align="top"
       color="red-500"
@@ -68,7 +68,7 @@ const { fetchMultiplePages, loading, goToMovie } = useMovies();
 
 const loadCarousels = async () => {
   for (const carousel of carousels.value) {
-    carousel.movies = await fetchMultiplePages(carousel.searchTerm, 2);
+    carousel.movies = await fetchMultiplePages(carousel.searchTerm, 1);
   }
 };
 
