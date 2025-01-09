@@ -1,11 +1,13 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <div class="grid flex-grow lg:flex">
+    <div class="flex flex-grow">
       <Sidebar />
-      <main class="flex-1 p-8 overflow-auto">
+
+      <main class="flex-1 p-8 overflow-auto mt-16 lg:mt-0">
         <slot />
       </main>
     </div>
+
     <Footer :links="footerLinks" copyright="© 2025 Netflix, Inc." />
   </div>
 </template>

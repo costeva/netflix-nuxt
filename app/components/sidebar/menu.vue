@@ -1,32 +1,34 @@
 <template>
-  <div>
+  <nav class="flex flex-col h-full" aria-label="Menú principal">
     <header
-      class="flex items-center gap-2 p-4 hover:scale-[101%] transition cursor-pointer"
+      class="flex items-center gap-2 p-4 hover:scale-[101%] transition cursor-pointer bg-gray-900"
     >
       <Logo :src="logoSrc" />
     </header>
-    <div class="px-4 grow">
-      <div class="grid gap-2">
+    <div class="px-2 grow bg-gray-900 overflow-y-auto">
+      <div class="grid gap-2 mt-4">
         <NuxtLink
           v-for="(item, index) in items"
           :key="index"
           :href="item.path"
-          class="flex items-center justify-center gap-2 px-2 py-1 transition rounded cursor-pointer group relative"
+          class="flex items-center gap-2 px-4 py-2 transition rounded cursor-pointer group relative"
+          :aria-label="item.label || 'Sin título'"
           @click="menuClicked(item)"
         >
-          <Icon size="40" :name="item.icon" class="text-white" />
+          <Icon size="24" :name="item.icon" class="text-white" />
           <span
             class="absolute bottom-0 left-0 w-full h-[2px] bg-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+            aria-hidden="true"
           />
           <span
-            class="text-xs font-medium text-gray-400 group-hover:text-red-500 transition duration-300 tracking-wide uppercase"
+            class="ml-2 text-sm font-medium text-gray-400 group-hover:text-red-500 transition duration-300 tracking-wide uppercase"
           >
             {{ item.label || "Sin título" }}
           </span>
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup>

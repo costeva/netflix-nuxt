@@ -3,16 +3,20 @@
     <InputSearch v-model="searchQuery" />
     <Spinner v-if="loading" />
     <Error v-if="error" :message="'No se encontraron resultados'" />
-    <GridMovies
-      v-if="results.length"
-      :movies="results"
-      :go-to-movie="goToMovie"
-    />
-    <MobileCarrusel
-      v-if="results.length"
-      :movies="results"
-      :go-to-movie="goToMovie"
-    />
+    <ClientOnly fallback="Cargando carrusel...">
+      <GridMovies
+        v-if="results.length"
+        :movies="results"
+        :go-to-movie="goToMovie"
+      />
+    </ClientOnly>
+    <ClientOnly fallback="Cargando carrusel...">
+      <MobileCarrusel
+        v-if="results.length"
+        :movies="results"
+        :go-to-movie="goToMovie"
+      />
+    </ClientOnly>
     <Pagination
       v-if="totalPages > 1"
       :current-page="currentPage"

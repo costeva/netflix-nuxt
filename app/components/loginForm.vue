@@ -3,7 +3,12 @@
     <div
       class="relative z-10 w-full max-w-md px-6 py-8 bg-black bg-opacity-70 border border-gray-700 rounded"
     >
-      <p v-if="message" class="text-white font-semibold flex justify-center">
+      <p
+        v-if="message"
+        class="text-white font-semibold flex justify-center"
+        role="alert"
+        aria-live="assertive"
+      >
         {{ message }}
       </p>
       <h1 class="mb-6 text-3xl font-semibold text-white">Inicia sesión</h1>
@@ -20,11 +25,12 @@
             id="email"
             v-model="email"
             name="email"
+            autocomplete="email"
             type="email"
             class="w-full px-3 py-2 text-sm text-white placeholder-gray-400 bg-gray-800 bg-opacity-70 border border-gray-600 rounded focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
             placeholder="Ingresa tu correo o teléfono"
             required
-          >
+          />
         </div>
 
         <div class="mb-4">
@@ -39,10 +45,11 @@
             v-model="password"
             name="password"
             type="password"
+            autocomplete="current-password"
             class="w-full px-3 py-2 text-sm text-white placeholder-gray-400 bg-gray-800 bg-opacity-70 border border-gray-600 rounded focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
             placeholder="Tu contraseña"
             required
-          >
+          />
         </div>
 
         <button
@@ -62,7 +69,7 @@
               name="rememberMe"
               type="checkbox"
               class="mr-1 rounded border-gray-400 focus:ring-0"
-            >
+            />
             <label for="rememberMe">Recuérdame</label>
           </div>
           <div>

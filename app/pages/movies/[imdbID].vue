@@ -8,6 +8,18 @@
       color="red-500"
     />
     <div v-else class="container mx-auto px-4 py-6">
+      <div class="my-4">
+        <NuxtLink
+          to="/home"
+          aria-label="Volver a la página de inicio"
+          class="inline-flex items-center gap-2 bg-red-600 text-white py-1 px-3 rounded-md hover:bg-red-700 text-sm transition duration-300 focus:outline-none focus:ring-2 focus:ring-red-500"
+        >
+          <Icon name="mdi-arrow-left" class="w-4 h-4" />
+
+          <span>Atrás</span>
+        </NuxtLink>
+      </div>
+
       <div class="relative">
         <img
           :src="movieDetails.Poster"
@@ -15,20 +27,41 @@
           class="w-full h-64 object-cover rounded-lg shadow-lg"
         />
         <h1
+          id="movie-title"
           class="absolute bottom-4 left-4 text-3xl font-bold bg-black/70 px-3 py-1 rounded-md"
         >
           {{ movieDetails.Title }}
         </h1>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <section
+        class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6"
+        aria-labelledby="movie-details"
+      >
         <div>
-          <p><strong>Año:</strong> {{ movieDetails.Year }}</p>
-          <p><strong>Duración:</strong> {{ movieDetails.Runtime }}</p>
-          <p><strong>Género:</strong> {{ movieDetails.Genre }}</p>
-          <p><strong>Director:</strong> {{ movieDetails.Director }}</p>
-          <p><strong>Actores:</strong> {{ movieDetails.Actors }}</p>
-          <p class="mt-4"><strong>Sinopsis:</strong> {{ movieDetails.Plot }}</p>
+          <h2 class="sr-only">Detalles de la Película</h2>
+          <ul class="space-y-2">
+            <li>
+              <strong>Año:</strong> <span>{{ movieDetails.Year }}</span>
+            </li>
+            <li>
+              <strong>Duración:</strong> <span>{{ movieDetails.Runtime }}</span>
+            </li>
+            <li>
+              <strong>Género:</strong> <span>{{ movieDetails.Genre }}</span>
+            </li>
+            <li>
+              <strong>Director:</strong>
+              <span>{{ movieDetails.Director }}</span>
+            </li>
+            <li>
+              <strong>Actores:</strong> <span>{{ movieDetails.Actors }}</span>
+            </li>
+            <li>
+              <strong>Sinopsis:</strong>
+              <p class="mt-1">{{ movieDetails.Plot }}</p>
+            </li>
+          </ul>
         </div>
 
         <div>
@@ -44,7 +77,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
