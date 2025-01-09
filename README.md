@@ -17,7 +17,7 @@ Node.js (opcional, si deseas ejecutarlo localmente sin Docker)
 
 1. Clonar el repositorio
 
-<poné la URL de tu repositorio aquí>
+https://github.com/costeva/netflix-nuxt.git
 
 2. Levantar el contenedor con Docker
 
