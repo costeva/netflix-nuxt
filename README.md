@@ -33,6 +33,9 @@ Abre tu navegador y visita:
 
 http://localhost:3000
 
+Usuario:test@example.com
+
+Constraseña:123456
 📂 Estructura del Proyecto
 
 .nuxt/ # Archivos generados por Nuxt
