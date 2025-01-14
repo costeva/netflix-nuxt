@@ -82,12 +82,11 @@
   </div>
 </template>
 
-import Spinner from '@/components/Spinner.vue';
-<script setup>
+<script setup lang="ts">
 const { fetchMovieDetails, movieDetails } = useMovies();
 const route = useRoute();
 
-const imdbID = route.params.imdbID;
+const imdbID = route.params.imdbID as string;
 
 onMounted(async () => {
   fetchMovieDetails(imdbID);

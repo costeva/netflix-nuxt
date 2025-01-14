@@ -59,12 +59,25 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+interface Movie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+interface Carousel {
+  title: string;
+  searchTerm: string;
+  movies: Movie[];
+}
+
 definePageMeta({
   middleware: "auth",
 });
 
-const carousels = ref([
+const carousels = ref<Carousel[]>([
   {
     title: "Solo en Netflix",
     searchTerm: "Action",
@@ -76,6 +89,7 @@ const carousels = ref([
     movies: [],
   },
 ]);
+
 const { fetchMultiplePages, loading, goToMovie } = useMovies();
 
 const loadCarousels = async () => {

@@ -1,7 +1,15 @@
 import { debounce } from "lodash-es";
+interface Movie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
 export function useSearchMovies() {
   const searchQuery = ref("");
-  const results = ref([]);
+  const results = ref<Movie[]>([]);
   const loading = ref(false);
   const error = ref("");
   const currentPage = ref(1);
@@ -9,47 +17,46 @@ export function useSearchMovies() {
   const router = useRouter();
   const totalPages = computed(() => Math.ceil(totalResults.value / 10));
 
-  const goToMovie = (imdbID) => {
-    router.push(`/movies/${imdbID}`);
-  };
-  const fetchMovies = async (query, page) => {
+  const fetchMovies = async (
+    query: string,
+    page: number = 1
+  ): Promise<void> => {
     loading.value = true;
     error.value = "";
-    results.value = [];
-    totalResults.value = 0;
+
     try {
-      const response = await $fetch("https://www.omdbapi.com/", {
-        params: {
+      const { data, error: fetchError } = await useFetch<{
+        Search: Movie[];
+        totalResults: string;
+      }>("https://www.omdbapi.com/", {
+        query: {
           apikey: "4a308855",
           s: query,
-          page: page,
+          page: page.toString(),
         },
       });
 
-      if (response.Response === "True") {
-        results.value = response.Search;
-        totalResults.value = parseInt(response.totalResults, 10);
-      } else {
-        results.value = [];
-        totalResults.value = 0;
-        error.value = response.Error || "No se encontraron resultados.";
+      if (fetchError.value) {
+        throw new Error(fetchError.value.message);
       }
+
+      results.value = data.value?.Search || [];
+      totalResults.value = parseInt(data.value?.totalResults || "0", 10);
     } catch (err) {
-      error.value = err?.message;
-      results.value = [];
-      totalResults.value = 0;
+      error.value = (err as Error).message;
     } finally {
       loading.value = false;
     }
   };
 
-  const debouncedFetch = debounce((query) => {
-    currentPage.value = 1;
-    fetchMovies(query, currentPage.value);
-  }, 500);
+  const debouncedFetch = debounce((query: string) => {
+    fetchMovies(query);
+  }, 300);
 
-  const handleInput = () => {
-    debouncedFetch(searchQuery.value);
+  const handleInput = (query: string) => {
+    searchQuery.value = query;
+    currentPage.value = 1;
+    debouncedFetch(query);
   };
 
   const nextPage = () => {
@@ -64,6 +71,10 @@ export function useSearchMovies() {
       currentPage.value -= 1;
       fetchMovies(searchQuery.value, currentPage.value);
     }
+  };
+
+  const goToMovie = (imdbID: string) => {
+    router.push(`/movies/${imdbID}`);
   };
 
   return {

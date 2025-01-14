@@ -25,4 +25,7 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
+  typescript: {
+    typeCheck: true,
+  },
 });

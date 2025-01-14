@@ -26,6 +26,12 @@
             {{ item.label || "Sin título" }}
           </span>
         </NuxtLink>
+        <button
+          class="w-full py-2 mt-3 text-sm font-semibold text-white bg-red-600 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600"
+          @click="handleSubmit"
+        >
+          Cerrar sesión
+        </button>
       </div>
     </div>
   </nav>
@@ -33,6 +39,8 @@
 
 <script setup>
 import logoSrc from "@/assets/image/netflix-logo.png";
+const router = useRouter();
+const { logout } = useAuth();
 const items = ref([
   {
     title: "Search",
@@ -52,6 +60,11 @@ const emit = defineEmits(["menu-clicked"]);
 
 const menuClicked = (menuItem) => {
   emit("menu-clicked", menuItem);
+};
+
+const handleSubmit = async () => {
+  await logout();
+  router.push("/");
 };
 </script>
 

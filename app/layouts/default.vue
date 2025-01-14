@@ -12,8 +12,13 @@
   </div>
 </template>
 
-<script setup>
-const footerLinks = [
+<script setup lang="ts">
+interface FooterLink {
+  text: string;
+  href: string;
+}
+
+const footerLinks: FooterLink[] = [
   { text: "Audio descriptivo", href: "#" },
   { text: "Relaciones con inversionistas", href: "#" },
   { text: "Avisos legales", href: "#" },

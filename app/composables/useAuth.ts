@@ -1,6 +1,10 @@
+interface User {
+  email: string;
+}
+
 export const useAuth = () => {
-  const isAuthenticated = useState("isAuthenticated", () => false);
-  const user = useState("user", () => null);
+  const isAuthenticated: Ref<boolean> = ref(false);
+  const user: Ref<User | null> = ref(null);
 
   const restoreSession = () => {
     if (import.meta.client) {
@@ -8,12 +12,12 @@ export const useAuth = () => {
       const storedUser = localStorage.getItem("user");
       if (auth === "true") {
         isAuthenticated.value = true;
-        user.value = JSON.parse(storedUser);
+        user.value = storedUser ? (JSON.parse(storedUser) as User) : null;
       }
     }
   };
 
-  const login = async (email, password) => {
+  const login = async (email: string, password: string): Promise<boolean> => {
     if (email === "test@example.com" && password === "123456") {
       isAuthenticated.value = true;
       user.value = { email };
